@@ -35,5 +35,15 @@ npm run dev
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
   ➜  press h to show help
+
+---iconos de ionic
+https://ionic.io/ionicons
+
+
+--lista de componentes ionic
+https://ionicframework.com/docs/api/list
+
+
+
 tiempo en el video
 38.05
