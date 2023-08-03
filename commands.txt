@@ -1,0 +1,39 @@
+Your Ionic app is ready! Follow these next steps:
+
+- Go to your new project: cd .\appReactCelu
+- Run ionic serve within the app directory to see your app in the browser
+- Run ionic capacitor add to add a native iOS or Android project using Capacitor
+- Generate your app icon and splash screens using cordova-res --skip-config --copy
+- Explore the Ionic docs for components, tutorials, and more: https://ion.link/docs
+- Building an enterprise app? Ionic has Enterprise Support and Features: https://ion.link/enterprise-edition
+
+
+--creacion del proyecto (se debe lanzar el comando como administrador)
+ionic start appReactCelu sidemenu --type=react
+
+-- para qeu la aplicacion se nativa (capacitor ayuda a hacer posible esto)
+ionic integrations enable capacitor
+
+--activar android para capacitor
+ionic cap add android
+
+--como levantar
+npm run dev 
+
+(los posible comandos a levantar estan en el archivo package.json y son los siguientes)
+"scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test.e2e": "cypress run",
+    "test.unit": "vitest",
+    "lint": "eslint"
+  },
+
+  VITE v4.4.8  ready in 3635 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h to show help
+tiempo en el video
+38.05
