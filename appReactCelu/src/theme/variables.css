@@ -234,3 +234,8 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-background: #1e1e1e;
   }
 }
+
+/*############# Estilos para CustomerList */ 
+.table ion-row:nth-child(even) {background-color: #e3f3fd;}
+.table ion-row:nth-child(odd) {background: #c6d9f59c;}
+.table ion-row:first-child{font-weight: bold; background-color: #3e413f;}
