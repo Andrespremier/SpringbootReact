@@ -16,7 +16,7 @@ import {
 } from "@ionic/react";
 import { useParams } from "react-router";
 import ExploreContainer from "../../components/ExploreContainer";
-import { add } from "ionicons/icons";
+import { add, close, pencil } from "ionicons/icons";
 import { useEffect, useState } from "react";
 
 const CustomerList: React.FC = () => {
@@ -73,13 +73,28 @@ const CustomerList: React.FC = () => {
           </IonItem>
           <IonGrid className="table">
             
+          <IonRow>
+                <IonCol>Nombre</IonCol>
+                <IonCol>Email</IonCol>
+                <IonCol>Telefono</IonCol>
+                <IonCol>Direccion</IonCol>
+                <IonCol>Accion</IonCol>
+              </IonRow>
+
             {clientes.map((cliente:any) =>
                 <IonRow>
                 <IonCol>{cliente.firstname}</IonCol>
                 <IonCol>{cliente.email}</IonCol>
                 <IonCol>{cliente.phone}</IonCol>
                 <IonCol>{cliente.address}</IonCol>
-                <IonCol>Accion</IonCol>
+                <IonCol>
+                    <IonButton color="primary">
+                        <IonIcon icon={pencil} slot="icon-only" />
+                    </IonButton>
+                    <IonButton color="danger">
+                        <IonIcon icon={close} slot="icon-only" />
+                    </IonButton>
+                </IonCol>
               </IonRow>
                 )}
         
