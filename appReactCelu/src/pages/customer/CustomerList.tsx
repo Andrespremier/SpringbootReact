@@ -17,11 +17,34 @@ import {
 import { useParams } from "react-router";
 import ExploreContainer from "../../components/ExploreContainer";
 import { add } from "ionicons/icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const CustomerList: React.FC = () => {
   const { name } = useParams<{ name: string }>();
-  
+  const [clientes,setClientes] = useState<any>([]);
+
+  useEffect(()=>{search();},[]);
+
+  const search = () => 
+  {
+        const datosDeEjemplo = [{
+            id: '1',
+            firstname: 'nombreEjemplo',
+            lastname: 'apellidoEjem',
+            email: 'bla@falso.com',
+            phone:'34523445',
+            address:'direccionEjemplo'
+        },
+        {
+            id: '2',
+            firstname: 'nombreEjemplo2',
+            lastname: 'apellidoEjem2',
+            email: 'bla2@falso.com',
+            phone:'345234452',
+            address:'direccionEjemplo2'
+        }]
+        setClientes(datosDeEjemplo);
+  }
 
   return (
     <IonPage>
@@ -49,44 +72,17 @@ const CustomerList: React.FC = () => {
             </IonButton>
           </IonItem>
           <IonGrid className="table">
-            <IonRow>
-              <IonCol>Nombre</IonCol>
-              <IonCol>Email</IonCol>
-              <IonCol>Telefono</IonCol>
-              <IonCol>Direccion</IonCol>
-              <IonCol>Accion</IonCol>
-            </IonRow>
-
-            <IonRow>
-              <IonCol>Nombre</IonCol>
-              <IonCol>Email</IonCol>
-              <IonCol>Telefono</IonCol>
-              <IonCol>Direccion</IonCol>
-              <IonCol>Accion</IonCol>
-            </IonRow>
-
-            <IonRow>
-              <IonCol>Nombre</IonCol>
-              <IonCol>Email</IonCol>
-              <IonCol>Telefono</IonCol>
-              <IonCol>Direccion</IonCol>
-              <IonCol>Accion</IonCol>
-            </IonRow>
-            <IonRow>
-              <IonCol>Nombre</IonCol>
-              <IonCol>Email</IonCol>
-              <IonCol>Telefono</IonCol>
-              <IonCol>Direccion</IonCol>
-              <IonCol>Accion</IonCol>
-            </IonRow>
-
-            <IonRow>
-              <IonCol>Nombre</IonCol>
-              <IonCol>Email</IonCol>
-              <IonCol>Telefono</IonCol>
-              <IonCol>Direccion</IonCol>
-              <IonCol>Accion</IonCol>
-            </IonRow>
+            
+            {clientes.map((cliente:any) =>
+                <IonRow>
+                <IonCol>{cliente.firstname}</IonCol>
+                <IonCol>{cliente.email}</IonCol>
+                <IonCol>{cliente.phone}</IonCol>
+                <IonCol>{cliente.address}</IonCol>
+                <IonCol>Accion</IonCol>
+              </IonRow>
+                )}
+        
           </IonGrid>
         </IonCard>
       </IonContent>
