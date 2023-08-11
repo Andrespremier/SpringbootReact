@@ -23,6 +23,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import CustomerList from './pages/customer/CustomerList';
+import CustomerEdit from './pages/customer/CustomerEdit';
 
 setupIonicReact();
 
@@ -38,6 +39,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/folder/customers" exact={true}>
               <CustomerList></CustomerList>
+            </Route>
+            <Route path="/folder/customer/:id" exact={true}>
+              <CustomerEdit></CustomerEdit>
             </Route>
             
           </IonRouterOutlet>

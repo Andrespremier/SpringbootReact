@@ -14,37 +14,48 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import ExploreContainer from "../../components/ExploreContainer";
 import { add, close, pencil } from "ionicons/icons";
 import { useEffect, useState } from "react";
+import { removeCustomer, saveCustomer, searchCustomers } from "./CustomerApi";
 
 const CustomerList: React.FC = () => {
   const { name } = useParams<{ name: string }>();
   const [clientes,setClientes] = useState<any>([]);
+  const history = useHistory();
 
   useEffect(()=>{search();},[]);
 
   const search = () => 
   {
-        const datosDeEjemplo = [{
-            id: '1',
-            firstname: 'nombreEjemplo',
-            lastname: 'apellidoEjem',
-            email: 'bla@falso.com',
-            phone:'34523445',
-            address:'direccionEjemplo'
-        },
-        {
-            id: '2',
-            firstname: 'nombreEjemplo2',
-            lastname: 'apellidoEjem2',
-            email: 'bla2@falso.com',
-            phone:'345234452',
-            address:'direccionEjemplo2'
-        }]
-        setClientes(datosDeEjemplo);
+        let result = searchCustomers();
+        setClientes(result);
   }
+
+  const remove = (id: string) => 
+  {
+    removeCustomer(id)
+    search();
+  }
+
+  const pruebaLocalStorage = () => 
+  {
+      const ejemplo = [{
+        id: '1',
+        firstname: 'nombreEjemplo',
+        lastname: 'apellidoEjem',
+        email: 'bla@falso.com',
+        phone:'34523445',
+        address:'direccionEjemplo'
+    }]
+    saveCustomer(ejemplo);
+  }
+
+  const addCustomer = () => 
+  {
+    history.push('/folder/customer/new');
+  } 
 
   return (
     <IonPage>
@@ -66,7 +77,7 @@ const CustomerList: React.FC = () => {
         <IonCard>
           <IonTitle> Clientes </IonTitle>
           <IonItem>
-            <IonButton slot="end">
+            <IonButton slot="end" onClick={addCustomer}>
               <IonIcon icon={add} />
               agregar cliente
             </IonButton>
@@ -91,7 +102,7 @@ const CustomerList: React.FC = () => {
                     <IonButton color="primary">
                         <IonIcon icon={pencil} slot="icon-only" />
                     </IonButton>
-                    <IonButton color="danger">
+                    <IonButton color="danger" onClick={() => remove(cliente.id)}>
                         <IonIcon icon={close} slot="icon-only" />
                     </IonButton>
                 </IonCol>
