@@ -19,7 +19,7 @@ import {
   import ExploreContainer from "../../components/ExploreContainer";
   import { add, close, pencil } from "ionicons/icons";
   import { useEffect, useState } from "react";
-  import { removeCustomer, saveCustomer, searchCustomers } from "./CustomerApi";
+  import { removeCustomer, saveCustomer, searchCustomerById, searchCustomers } from "./CustomerApi";
   
   const CustomerEdit: React.FC = () => {
     const { name, id } = useParams<{ name: string; id: string; }>();
@@ -30,13 +30,17 @@ import {
   
     const search = () => 
     {
+        if(id !== 'new')
+        {
+            let result = searchCustomerById(id);
+            setCustomer(result);
+        }
         //   let result = searchCustomers();
         //   setClientes(result);
     }
 
     const save = () => 
     {
-       customer.id = Math.round(Math.random() * 100000);
        saveCustomer(customer);
        history.push('/folder/customers')
     }

@@ -1,3 +1,5 @@
+import Customer from "./Customer";
+
 export function searchCustomers()
 {
 
@@ -17,14 +19,32 @@ export function removeCustomer(id: string)
 {
    let customers = searchCustomers();
 
-   let indice = customers.findIndex((customer:any) => customers.id == id);
+   let indice = customers.findIndex((customer:Customer) => customers.id == id);
    customers.splice(indice,1);
    localStorage['customers'] = JSON.stringify(customers);
 }
 
-export function saveCustomer(customer:any)
+export function saveCustomer(customer:Customer)
 {
    let customers = searchCustomers();
-   customers.push(customer);
+   if(customer.id)
+   {
+        //edita
+        let indice = customers.findIndex((c:Customer) => c.id == customer.id);
+        customers[indice] = customer;
+
+   }
+   else
+   {
+        //guarda
+        customer.id = String(Math.round(Math.random() * 10000));
+        customers.push(customer);
+   }
    localStorage['customers'] = JSON.stringify(customers);
+}
+
+export function searchCustomerById(id:string)
+{
+   let customers = searchCustomers();
+   return customers.find((customer:any) => customer.id == id);
 }
